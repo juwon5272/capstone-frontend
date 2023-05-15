@@ -1,0 +1,104 @@
+.menuBar {
+  width: 100%;
+  top: 0px;
+  z-index: 2;
+}
+
+.menuBar div {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 47%;
+}
+
+.menuBar div a {
+  text-align: right;
+  font-size: 12px;
+  font-weight: 600;
+  color: grey;
+  margin: 10px 10px 0 0;
+  text-decoration-line: none;
+}
+
+.menuBar__mainMenu {
+  border-top: 1px solid #cccccc;
+  padding: 0 15px;
+}
+
+.menuBar__mainMenu ul {
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 0;
+}
+
+.menuBar__mainMenu ul li {
+  list-style: none;
+  display: block;
+  padding: 5px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0);
+  border-bottom: 1px solid rgba(0, 0, 0, 0);
+  width: 17%;
+  text-align: center;
+}
+.menuBar__mainMenu ul li:hover {
+  border-top: 0.6px solid rgba(0, 0, 0, 1);
+  border-bottom: 0.8px solid rgba(0, 0, 0, 1);
+}
+@media screen and (max-width: 767px) {
+  .menuBar__mainMenu ul li {
+    width: 18%;
+  }
+}
+
+.menuBar__mainMenu ul li a {
+  display: block;
+  padding: 5px;
+  color: black;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+  text-decoration-line: none;
+
+  ont-size: 42px;
+  font-weight: 700;
+  /* color: white; */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  animation: titleText 1s ease-in-out;
+}
+
+@media screen and (min-width: 1024px) {
+  .menuBar__mainMenu ul li {
+    width: 12%;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .menuBar {
+    width: 100%;
+  }
+
+  .menuBar__mainMenu {
+    padding: 0;
+    border-radius: 0;
+  }
+
+  .menuBar__mainMenu ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+
+  .menuBar__mainMenu ul li a {
+    font-size: 14px;
+    padding: 12px 10px;
+  }
+
+  .menuBar__mainMenu ul li {
+    width: 22%;
+    text-align: center;
+  }
+}
