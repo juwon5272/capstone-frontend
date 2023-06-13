@@ -117,22 +117,39 @@ function SignUp() {
         <div className={styles.error} id="error__gender"></div>
         <hr />
         <div className={styles.footer}>
-          <button
-            id="signup__button"
-            style={{
-              backgroundColor: "#0084ff",
-              color: "#FFF",
-              padding: "20px 180px",
-              border: "none",
-              borderRadius: "5px",
-              fontSize: "16px",
-              fontWeight: "bold",
-            }}
-            onclick="signup()"
-            disabled
-          >
-            가입하기
-          </button>
+          <Link to="/Login">
+            <button
+              style={{
+                backgroundColor: "#0084ff",
+                color: "#FFF",
+                padding: "20px 180px",
+                border: "none",
+                borderRadius: "5px",
+                fontSize: "16px",
+                fontWeight: "bold",
+              }}
+            >
+              가입하기
+            </button>
+          </Link>
+          {/* <Link to="/Translate">
+            <button
+              id="signup__button"
+              style={{
+                backgroundColor: "#0084ff",
+                color: "#FFF",
+                padding: "20px 180px",
+                border: "none",
+                borderRadius: "5px",
+                fontSize: "16px",
+                fontWeight: "bold",
+              }}
+              onclick="signup()"
+              disabled
+            >
+              가입하기
+            </button>
+          </Link> */}
         </div>
       </div>
     </>
