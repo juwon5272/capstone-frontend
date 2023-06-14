@@ -5,6 +5,7 @@ import Translate from "./pages/Translate";
 import Trans from "./pages/Trans";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
+import Test from "./pages/Test";
 
 function App() {
   return (
@@ -12,9 +13,10 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route path="/Translate" element={<Translate />} />
+          <Route path="/Translate" element={<Trans />} />
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/Login" element={<Login />} />
+          <Route path="/Test" element={<Test />} />
         </Routes>
       </BrowserRouter>
     </div>

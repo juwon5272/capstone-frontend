@@ -253,10 +253,10 @@ function Translate() {
             </form>
           </div>
           <div id={styles.memberWrap}>
-            <div id={styles.memberList}>
+            {/* <div id={styles.memberList}>
               <div id={styles.memberHeader}>대화내용</div>
               <div id={styles.memberSelect}></div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
