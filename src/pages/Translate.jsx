@@ -136,13 +136,13 @@ function Translate() {
     },
   });
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
     const messageInput = document.getElementById("message");
     const message = messageInput.value;
     if (message) {
       const newMessage = (
-        <>
+        <React.Fragment key={Date.now()}>
           <div className={styles.myMsg}>
             <span className={styles.msg}>{message}</span>
           </div>
@@ -150,11 +150,28 @@ function Translate() {
             <span className={styles.anotherName}>ParrBOT</span>
             <span className={styles.msg}>[제주도] {message}</span>
           </div>
-        </>
+        </React.Fragment>
       );
+      // console.log(JSON.stringify({ message }));
+      try {
+        const response = await fetch("http://localhost:8000/messages", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ message }),
+        });
+        if (response.ok) {
+          console.log("Message sent successfully");
+        } else {
+          console.error("Failed to send message");
+        }
+      } catch (error) {
+        console.error("Error sending message:", error);
+      }
       setMessages([...messages, newMessage]);
       messageInput.value = "";
-      setValue();
+      setValue("");
     }
   };
 
