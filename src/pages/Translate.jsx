@@ -130,6 +130,7 @@ import { useSpeechRecognition } from "react-speech-kit";
 function Translate() {
   const [messages, setMessages] = useState([]);
   const [value, setValue] = useState("");
+  const [region, setRegion] = useState("지역을 선택해주세요");
   const { listen, listening, stop } = useSpeechRecognition({
     onResult: (result) => {
       setValue(result);
@@ -139,7 +140,8 @@ function Translate() {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     const messageInput = document.getElementById("message");
-    const message = messageInput.value;
+    let message = messageInput.value;
+    // const sendMessage = region + messageInput.value;
     if (message) {
       const newMessage = (
         <React.Fragment key={Date.now()}>
@@ -148,11 +150,14 @@ function Translate() {
           </div>
           <div className={styles.anotherMsg}>
             <span className={styles.anotherName}>ParrBOT</span>
-            <span className={styles.msg}>[제주도] {message}</span>
+            <span className={styles.msg}>
+              [{region}] {message}
+            </span>
           </div>
         </React.Fragment>
       );
-      // console.log(JSON.stringify({ message }));
+      message = region + messageInput.value;
+      console.log(JSON.stringify({ message }));
       try {
         const response = await fetch("http://localhost:8000/messages", {
           method: "POST",
@@ -189,26 +194,49 @@ function Translate() {
             <div id={styles.roomList}>
               <div id={styles.roomHeader}>사투리 지역 선택</div>
               <div id={styles.roomSelect}>
-                <div className={styles.roomEl} data-id="1">
+                <div
+                  className={styles.roomEl}
+                  id="juju"
+                  data-id="1"
+                  onClick={() => setRegion("제주도")}
+                >
                   제주도
                 </div>
-                <div className={styles.roomEl} data-id="2">
+                <div
+                  className={styles.roomEl}
+                  id="gyeong"
+                  data-id="2"
+                  onClick={() => setRegion("경상도")}
+                >
                   경상도
                 </div>
-                <div className={styles.roomEl} data-id="3">
+                <div
+                  className={styles.roomEl}
+                  id="jun"
+                  data-id="3"
+                  onClick={() => setRegion("전라도")}
+                >
                   전라도
                 </div>
-                <div className={styles.roomEl} data-id="4">
+                <div
+                  className={styles.roomEl}
+                  data-id="4"
+                  onClick={() => setRegion("충청도")}
+                >
                   충청도
                 </div>
-                <div className={styles.roomEl} data-id="5">
+                <div
+                  className={styles.roomEl}
+                  data-id="5"
+                  onClick={() => setRegion("강원도")}
+                >
                   강원도
                 </div>
               </div>
             </div>
           </div>
           <div id={styles.chatWrap}>
-            <div id={styles.chatHeader}>제주도</div>
+            <div id={styles.chatHeader}>{region}</div>
             <div id={styles.chatLog}>{messages}</div>
             <form
               id="chatForm"
