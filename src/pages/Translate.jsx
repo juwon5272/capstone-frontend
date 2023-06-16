@@ -122,7 +122,7 @@
 
 // export default Translate;
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../css/Translate.module.css";
 import { Link } from "react-router-dom";
 import { useSpeechRecognition } from "react-speech-kit";
@@ -136,6 +136,20 @@ function Translate() {
       setValue(result);
     },
   });
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/");
+        const result = await response.json();
+        setData(result);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, []);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -151,7 +165,7 @@ function Translate() {
           <div className={styles.anotherMsg}>
             <span className={styles.anotherName}>ParrBOT</span>
             <span className={styles.msg}>
-              [{region}] {message}
+              [{region}] {data}
             </span>
           </div>
         </React.Fragment>
