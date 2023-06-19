@@ -1,3 +1,4 @@
+// cd "/data/test/capstone-frontend"
 // npm run build
 // npx serve  -s build -l 40799
 
@@ -5,7 +6,9 @@ import React, { useEffect, useState } from "react";
 import styles from "../css/Translate.module.css";
 import { Link } from "react-router-dom";
 import { useSpeechRecognition } from "react-speech-kit";
-import AudioPlayer from "../components/AudioPlayer";
+import volume from "../images/volume.png";
+// import ""
+// import AudioPlayer from "../components/AudioPlayer";
 // import tts from "../images/tts.wav"
 // import React from "react";
 // import ex from "./ex.wav";
@@ -73,6 +76,7 @@ function Translate() {
     const messageInput = document.getElementById("message");
     let message = messageInput.value;
     let inputMessage = messageInput.value;
+    // let audio = new Audio(require("../images/tts.wav"));
     // const sendMessage = region + messageInput.value;
     if (message) {
       let newMessage = (
@@ -115,17 +119,42 @@ function Translate() {
           setData(result);
           console.log("말풍선 실행 result : " + result);
           console.log("이거는 data : " + data);
+          // let audio = new Audio(require("../images/tts.wav"));
+          const start = () => {
+            let audio = new Audio(require("../images/tts.wav"));
+            audio.play();
+          };
           newMessage = (
             <React.Fragment key={Date.now()}>
               <div className={styles.myMsg}>
                 <span className={styles.msg}>{inputMessage}</span>
               </div>
               <div className={styles.anotherMsg}>
-                <span className={styles.anotherName}>ParrBOT</span>
+                <span className={styles.anotherName}>
+                  ParrBOT
+                  <button
+                    onClick={start}
+                    style={{
+                      padding: "0px",
+                      marginLeft: "5px",
+                      border: "none",
+                      backgroundColor: "white",
+                    }}
+                  >
+                    <img style={{ width: "15.5px" }} src={volume} />
+                  </button>
+                </span>
+
                 <span className={styles.msg}>
                   [{region}] {print}
                 </span>
-                <AudioPlayer />
+
+                {/* <img style={{ width: "70px" }} src={volume} onClick={start}/> */}
+                {/* <button onClick={start}>
+                  <img style={{ width: "20px" }} src={volume}/>
+                </button> */}
+
+                {/* <AudioPlayer/> */}
               </div>
             </React.Fragment>
           );
